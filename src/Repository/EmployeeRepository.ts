@@ -1,4 +1,4 @@
-const employee = require("../Model/EmployeeModel")();
+import employee from "../Model/EmployeeModel";
 
 const FindAll = async () => {
     return await employee.findAll();
@@ -28,7 +28,7 @@ const Delete = async (id) => {
     });
 }
 
-module.exports = {
+export default {
     FindAll,
     FindById,
     Create,

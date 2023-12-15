@@ -1,6 +1,6 @@
-const express = require("express");
-const router = require("./router/router");
-const sequelize = require("./db/db")
+import express from "express";
+import router from "./router/router";
+import {sequelize} from "./db/db";
 
 const app = express();
 app.use(express.json());
@@ -11,4 +11,4 @@ app.use(router);
     await sequelize.sync();
 })();
 
-module.exports = app;
+export default app;

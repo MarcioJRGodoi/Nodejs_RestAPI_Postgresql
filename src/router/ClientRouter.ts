@@ -1,6 +1,6 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
-const clientController = require("../Controller/ClientController");
+import clientController from "../Controller/ClientController";
 
 router.get("/", clientController.FindAll);
 router.get("/:id", clientController.FindById);
@@ -8,4 +8,4 @@ router.post("/", clientController.Create);
 router.put("/:id", clientController.Update);
 router.delete("/:id", clientController.Delete);
 
-module.exports = router;
+export default router;

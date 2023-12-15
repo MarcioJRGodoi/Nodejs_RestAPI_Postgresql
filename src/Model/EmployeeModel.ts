@@ -1,7 +1,7 @@
-const DataTypes  = require('sequelize');
-const sequelize = require('../db/db');
-module.exports = () => {
-    return sequelize.define('Client', {
+import DataTypes from 'sequelize';
+import { sequelize } from '../db/db';
+export default () => {
+    return sequelize.define('Employee', {
         name: {
             type: DataTypes.STRING,
             allowNull: false
@@ -21,10 +21,6 @@ module.exports = () => {
                 len: [6,16]
             }
         },
-        phone: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        }
 
     });
 };
