@@ -15,7 +15,7 @@ class Employee extends Model<EmployeeAttributes, EmployeeCreationAttributes> {}
 
 Employee.init({
   id: {
-    type: DataTypes.INTEGER.UNSIGNED,
+    type: DataTypes.NUMBER.UNSIGNED,
     autoIncrement: true,
     primaryKey: true,
   },
