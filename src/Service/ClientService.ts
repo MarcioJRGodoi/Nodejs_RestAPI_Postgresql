@@ -1,4 +1,5 @@
-import { ClientAttributes, ClientInstance } from "../Model/ClientInterface";
+import { Optional } from "sequelize";
+import { ClientCreationAttributes } from "../Model/ClienttModel";
 import clientContext from "../Repository/ClientRepository";
 
 const FindAll = async () => {
@@ -9,11 +10,11 @@ const FindById = async (id: number) => {
     return await clientContext.FindById(id);
 }
 
-const Create = async (data: Partial<ClientInstance>) => {
+const Create = async (data: Optional<ClientCreationAttributes, "id">) => {
     return await clientContext.Create(data);
 }
 
-const Update = async (id: number,data: Partial<ClientAttributes>) => {
+const Update = async (id: number,data: Partial<ClientCreationAttributes>) => {
     return await clientContext.Update(id, data);
 }
 

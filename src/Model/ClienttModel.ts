@@ -1,21 +1,22 @@
 import { Model, Optional, DataTypes } from 'sequelize';
 import { sequelize } from '../db/db';
 
-interface EmployeeAttributes {
+export interface ClientAttributes {
   id: number;
   name: string;
   email: string;
   login: string;
   password: string;
+  phone: number;
 }
 
-export interface EmployeeCreationAttributes extends Optional<EmployeeAttributes, 'id'> {}
+export interface ClientCreationAttributes extends Optional<ClientAttributes, 'id'> {}
 
-class Employee extends Model<EmployeeAttributes, EmployeeCreationAttributes> {}
+class Client extends Model<ClientAttributes, ClientCreationAttributes> {}
 
-Employee.init({
+Client.init({
   id: {
-    type: DataTypes.INTEGER.UNSIGNED,
+    type: DataTypes.NUMBER.UNSIGNED,
     autoIncrement: true,
     primaryKey: true,
   },
@@ -38,9 +39,13 @@ Employee.init({
       len: [6,16]
     }
   },
+  phone: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
 }, {
   sequelize,
-  tableName: 'employees',
+  tableName: 'clients',
 });
 
-export default Employee;
+export default Client;

@@ -1,27 +1,29 @@
-import employee from "../Model/EmployeeModel";
+import { Optional } from "sequelize";
+import Employee, { EmployeeCreationAttributes } from "../Model/EmployeeModel";
 
-const FindAll = async () => {
-    return await employee.findAll();
+const FindAll = async (): Promise<Employee[]> => {
+    return await Employee.findAll();
 }
 
-const FindById = async (id) => {
-    return await employee.findByPk(id);
+const FindById = async (id: number): Promise<Employee | null> => {
+    return await Employee.findByPk(id);
 }
 
-const Create = async (data) => {
-    return await employee.create(data);
+const Create = async (data: Optional<EmployeeCreationAttributes, "id">): Promise<Employee> => {
+    return await Employee.create(data);
 }
 
-const Update = async (id, data) => {
-    return await employee.update(data, {
+const Update = async (id: number, data: Optional<EmployeeCreationAttributes, "id">): Promise<[number, Employee[]]> => {
+    return await Employee.update(data, {
+        returning: true,
         where: {
             id: id
         }
     });
 }
 
-const Delete = async (id) => {
-    return await employee.destroy({
+const Delete = async (id: number): Promise<number> => {
+    return await Employee.destroy({
         where: {
             id: id
         }
